@@ -3,7 +3,8 @@ MAINTAINER Unai Bikotek
 
 
 RUN  echo "deb http://www.ubnt.com/downloads/unifi/debian stable ubiquiti" > /etc/apt/sources.list.d/100-ubnt.list
-RUN  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
+RUN  apt-get install wget
+RUN  wget -O /etc/apt/trusted.gpg.d/unifi-repo.gpg https://dl.ubnt.com/unifi/unifi-repo.gpg 
 RUN  echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" > /etc/apt/sources.list.d/mongodb-org-3.4.list
 RUN  apt-get update && apt-get -y install unifi 
 RUN  apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
